@@ -1,0 +1,455 @@
+.App {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+  position: relative;
+  /* For absolute positioning of children */
+}
+
+/* Card Styling - Glassmorphism */
+.card,
+.dashboard-card {
+  background: rgba(0, 0, 0, 0.4);
+  /* Darker Glass */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* White Border */
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover,
+.dashboard-card:hover {
+  box-shadow: 0 10px 40px -10px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: var(--glass-border);
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  letter-spacing: -0.05em;
+  color: #eab308;
+  /* Dark Yellow */
+  background: none;
+  -webkit-text-fill-color: initial;
+  text-shadow: 0 0 10px rgba(234, 180, 8, 0.2);
+}
+
+/* Card Headers - General (Apps) */
+.card h1 {
+  color: #eab308;
+  /* Dark Yellow */
+  text-shadow: 0 0 10px rgba(234, 180, 8, 0.2);
+}
+
+/* Main Dashboard Specific Override */
+.dashboard-card h1 {
+  color: #ffffff;
+  /* White */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Navigation Grid */
+.grid-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(30, 41, 59, 0.4);
+  padding: 2.5rem;
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #ffffff;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.menu-item:hover::before {
+  opacity: 1;
+}
+
+.menu-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #eab308;
+  /* Dark Yellow */
+  font-family: var(--font-heading);
+}
+
+/* App Themes (Accents) */
+.hr-theme {
+  border-top: 4px solid #eab308;
+}
+
+.hr-theme:hover {
+  box-shadow: 0 0 20px rgba(234, 180, 8, 0.2);
+  border-color: #eab308;
+}
+
+.hr-theme h3 {
+  color: #eab308;
+}
+
+.crm-theme {
+  border-top: 4px solid #eab308;
+}
+
+.erp-theme {
+  border-top: 4px solid #eab308;
+}
+
+.erp-theme:hover {
+  box-shadow: 0 0 20px rgba(234, 180, 8, 0.2);
+  border-color: #eab308;
+}
+
+.erp-theme h3 {
+  color: #eab308;
+}
+
+.admin-theme {
+  border-top: 4px solid #eab308;
+}
+
+.admin-theme:hover {
+  box-shadow: 0 0 20px rgba(234, 180, 8, 0.2);
+  border-color: #eab308;
+}
+
+.admin-theme h3 {
+  color: #eab308;
+}
+
+/* Buttons & Actions */
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background: #5558e6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(99, 102, 241, 0.4);
+}
+
+.btn-danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--error);
+  border: 1px solid var(--error);
+  box-shadow: none;
+}
+
+.btn-danger:hover {
+  background: var(--error);
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+/* Utilities */
+.text-muted {
+  color: var(--text-muted);
+}
+
+.back-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--primary);
+}
+
+/* Mock Content */
+.mock-content {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: var(--glass-border);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.mock-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mock-row:last-child {
+  border-bottom: none;
+}
+
+.mock-row:first-child {
+  font-weight: 700;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Socket Status */
+/* Socket Status */
+/* Socket Status */
+.socket-status {
+  position: absolute;
+  /* Changed from fixed to absolute */
+  top: 1rem;
+  /* Aligned with padding */
+  right: 2rem;
+  /* Aligned with padding */
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-mono);
+  background: rgba(10, 10, 10, 0.8);
+  /* More opaque background */
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  /* Pill shape */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: 2000;
+  /* Higher z-index */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #39ff14;
+  /* Neon Green */
+  border-radius: 50%;
+  box-shadow: 0 0 8px #39ff14, 0 0 15px #39ff14;
+  /* Strong Neon Glow */
+  display: inline-block;
+}
+
+/* Password Toggle */
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-container input {
+  padding-right: 40px;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Simulation Mode Controls */
+.simulation-controls {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* White Border */
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  /* Subtle filler */
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.simulation-controls label {
+  color: #eab308;
+  /* Dark Yellow */
+  font-weight: 500;
+  width: 100%;
+  /* Force new line */
+  margin-bottom: 0.5rem;
+  /* Add specific spacing */
+}
+
+.simulation-controls select {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  outline: none;
+  cursor: pointer;
+}
+
+.simulation-controls select:focus {
+  border-color: #ffffff;
+}
+
+.simulation-controls p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  width: 100%;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Login Specific Layout - Fixed */
+.login-theme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 1rem;
+  background: transparent;
+  /* Changed from var(--bg-deep) to transparent */
+}
+
+/* Global Footer */
+.app-footer-text {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: 2rem;
+  opacity: 0.6;
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  width: 100%;
+  padding-bottom: 3rem;
+  /* Ensure scrolling space */
+}
+
+.login-theme .card {
+  width: 100%;
+  max-width: 400px;
+  /* Strict constraint */
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.05);
+  padding: 2.5rem;
+  border-radius: 16px;
+  display: flex;
+  /* Flex container for content */
+  flex-direction: column;
+}
+
+.login-theme h1 {
+  font-size: 1.75rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  /* White */
+  background: none;
+  /* Remove gradient text for cleaner look */
+  -webkit-text-fill-color: initial;
+}
+
+.login-theme form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  /* Better spacing between elements */
+  margin-top: 2rem;
+}
+
+.login-theme input {
+  margin: 0;
+  /* Remove default margins, handled by flex gap */
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.login-theme button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.login-theme button[type="submit"]:hover {
+  background: #e5e5e5;
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Fix Password Container specific to Login */
+.login-theme .password-container {
+  width: 100%;
+  margin: 0;
+}
+
+.login-theme .password-container input {
+  margin: 0;
+}

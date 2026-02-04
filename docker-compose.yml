@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: sso-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app # Hot reload mount for development
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+    networks:
+      - sso-network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: sso-frontend
+    ports:
+      - "5173:80" # Map host 5173 to container 80
+    depends_on:
+      - backend
+    networks:
+      - sso-network
+
+  redis:
+    image: redis:alpine
+    container_name: sso-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - sso-network
+
+networks:
+  sso-network:
+    driver: bridge
