@@ -1,8 +1,8 @@
-# Agentic AI-Driven SSO System
+# Agentic AI-Driven SSO System-SHIELD
 
 A next-generation Single Sign-On (SSO) system powered by autonomous AI agents for real-time security monitoring, risk assessment, and session management. This system features a unified dashboard hub connecting HR, CRM, ERP, and Admin portals.
 
-## 🚀 Features
+##  Features
 
 - **Agentic Security Layer**:
   - **Risk Agent**: Continuously evaluates user behavior and session anomalies.
@@ -22,7 +22,7 @@ A next-generation Single Sign-On (SSO) system powered by autonomous AI agents fo
   - Glassmorphism design with "Dark Yellow" activity highlights.
   - Responsive layout with integrated app launchers.
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Frontend**: React (Vite), CSS3 (Glassmorphism), Axios
 - **Backend**: Python (FastAPI)
@@ -30,7 +30,7 @@ A next-generation Single Sign-On (SSO) system powered by autonomous AI agents fo
 - **AI/ML**: Python-based autonomous agents
 - **Containerization**: Docker & Docker Compose
 
-## 📦 Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 - Node.js (v18+)
@@ -58,7 +58,7 @@ npm run dev
 ```
 Access the application at `http://localhost:5173`.
 
-## 🌐 Deployment
+##  Deployment
 
 ### Frontend (Vercel)
 1. Import the `frontend` folder as the root directory.
@@ -70,7 +70,7 @@ Access the application at `http://localhost:5173`.
 2. Build command: `pip install -r requirements.txt`
 3. Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 
-## 📂 Project Structure
+##  Project Structure
 ```
 agentic-sso/
 ├── backend/            # FastAPI Application & AI Agents
@@ -88,5 +88,7 @@ agentic-sso/
 └── README.md
 ```
 
-## 🔒 Security
+##  Security
 The system uses a "Zero Trust" approach where every request is vetted by the AI layer. Anomalies (e.g., impossible travel, device mismatch) trigger immediate session termination.
+
+
