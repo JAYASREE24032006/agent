@@ -10,12 +10,13 @@ const LoginPage = ({ onLogin, status }) => {
     const [showPassword, setShowPassword] = useState(false);
     // Prioritize message passed via redirect, else default status (Removing global logout message as requested)
     const [localStatus, setLocalStatus] = useState(status || '');
+    const [selectedCountry, setSelectedCountry] = useState('India');
 
     // Reset status on new login attempt
     const handleSubmit = (e) => {
         e.preventDefault();
         setLocalStatus('');
-        onLogin(username, password);
+        onLogin(username, password, selectedCountry);
     };
 
     // Animation Variants
@@ -46,6 +47,41 @@ const LoginPage = ({ onLogin, status }) => {
             alignItems: 'center',
             justifyContent: 'center'
         }}>
+            {/* Location Simulator UI */}
+            <div style={{
+                position: 'absolute',
+                top: '20px',
+                right: '20px',
+                zIndex: 10,
+                background: 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(10px)',
+                padding: '0.5rem 1rem',
+                borderRadius: '8px',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+            }}>
+                <span style={{ color: '#94a3b8', fontSize: '0.8rem' }}>📍 Sim Location:</span>
+                <select
+                    value={selectedCountry}
+                    onChange={(e) => setSelectedCountry(e.target.value)}
+                    style={{
+                        background: 'transparent',
+                        color: 'white',
+                        border: 'none',
+                        outline: 'none',
+                        fontSize: '0.9rem',
+                        fontWeight: 'bold',
+                        cursor: 'pointer'
+                    }}
+                >
+                    <option value="India" style={{ background: '#0f172a' }}>🇮🇳 India (Allowed)</option>
+                    <option value="USA" style={{ background: '#0f172a' }}>🇺🇸 USA (Blocked)</option>
+                    <option value="China" style={{ background: '#0f172a' }}>🇨🇳 China (Blocked)</option>
+                    <option value="Russia" style={{ background: '#0f172a' }}>🇷🇺 Russia (Blocked)</option>
+                </select>
+            </div>
             <motion.div
                 className="card"
                 style={{ zIndex: 1, backdropFilter: 'blur(10px)', backgroundColor: 'rgba(15, 23, 42, 0.6)' }}

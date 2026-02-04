@@ -17,7 +17,8 @@ class LoginRequest(BaseModel):
 async def login(
     request: Request,
     form_data: OAuth2PasswordRequestForm = Depends(), 
-    redis=Depends(get_redis)
+    redis=Depends(get_redis),
+    x_login_country: str = Header("India", alias="X-Login-Country")
 ):
     # Determine Client IP
     # In a real app behind a proxy, use X-Forwarded-For
@@ -69,10 +70,11 @@ async def login(
     
     # Create Meta for Risk Agent
     
-    # 🕵️‍♂️ MOCK GEO-LOCATION
-    detected_country = "India"
+    # 🕵️‍♂️ MOCK GEO-LOCATION (Driven by Frontend Demo Header)
+    detected_country = x_login_country
+    
     if form_data.username == "attacker":
-        detected_country = "Russia" # Simulate Foreign Attack
+        detected_country = "Russia" # Simulate Foreign Attack Override
         
     meta = {
         "ip": client_ip,

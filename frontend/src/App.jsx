@@ -50,8 +50,8 @@ function AppContent() {
         };
     }, []);
 
-    const handleLogin = async (username, password) => {
-        console.log("Attempting Login:", username);
+    const handleLogin = async (username, password, country = 'India') => {
+        console.log("Attempting Login:", username, "from", country);
         try {
             // Use URLSearchParams for application/x-www-form-urlencoded
             const params = new URLSearchParams();
@@ -59,7 +59,10 @@ function AppContent() {
             params.append('password', password);
 
             const res = await api.post('/auth/login', params, {
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Login-Country': country
+                }
             });
 
             console.log("Login Success:", res.data);
